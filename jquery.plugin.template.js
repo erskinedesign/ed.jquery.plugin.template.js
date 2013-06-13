@@ -3,7 +3,7 @@
  * A simple jQuery Plugin template that can optionally be loaded as an AMD module
  * 
  * @author  Tom Davies - Erskine Design
- * @version  0.1.1
+ * @version  0.1.2
  */
 (function (factory) {
     if (typeof define === 'function' && define.amd) {
@@ -54,10 +54,12 @@
     };
 
     $.fn.pluginName = function(option) {
-        var opts = $.fn.pluginName.defaults;
+        var opts;
 
         if (typeof option === 'object' && option) {
-            opts = $.extend( {}, opts, option );
+            opts = $.extend(true, {}, $.fn.toggler.defaults, option);
+        } else {
+            opts = $.fn.toggler.defaults;
         }
         return this.each(function() {
             var $this = $(this),
